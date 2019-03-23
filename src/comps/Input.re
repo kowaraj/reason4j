@@ -8,7 +8,7 @@ type state = string;
   let component = ReasonReact.reducerComponent("Input");
   let make = (~onSubmit, ~ph="Write smth..", _) => {
     ...component,
-    initialState: () => "",
+    initialState: () => "MATCH (ee:Person) WHERE ee.name = \"Emil\" RETURN ee;",
     reducer: (newText, _text) => ReasonReact.Update(newText),
     render: ({state: text, send}) =>
       <input
@@ -19,7 +19,7 @@ type state = string;
         onKeyDown=((evt) =>
           if (ReactEventRe.Keyboard.key(evt) == "Enter") {
             onSubmit(text);
-            send("")
+            send("MATCH (ee:Person) WHERE ee.name = \"Emil\" RETURN ee;")
           }
         )
       />

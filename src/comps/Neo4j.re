@@ -23,15 +23,14 @@ let component = ReasonReact.reducerComponent("Neo4j");
 let cbX = msg => {
     Js.log("RETURN ====== ")
     Js.log(msg)
-
   }
   
-let queryDB = q => {
+let read_text_file_____queryDB = q => {
     http_req("teststring", cbX);
-    {TodoType.id: 0, text: "query completed", completed: false}
+    {TodoType.id: 0, text: "query completed", completed: false} |>ignore;
   }
 
-let original_queryDB = q => {
+let queryDB = q => {
     //let q = "CREATE (ee:Person { name: \"Emil600\", from: \"Sweden\", klout: 600 })";
     neo4j_match_with_callback(q, cbX);
     {TodoType.id: 0, text: "query completed", completed: false}

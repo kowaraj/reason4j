@@ -45,6 +45,7 @@ function neo4j_match (q_str) {
             x_ret = "x-ret value"; //JSON.stringify(user.klou, null, 4);
             console.log(x_ret);
 	    retval = x_ret;
+
             console.log("retval = " + retval );
 	    set_retval(retval);
 	    return retval;
@@ -77,7 +78,8 @@ function neo4j_match_with_callback (q_str, cb) {
             console.log("success return !");
             console.log(JSON.stringify(user, null, 4));
             console.log("user = " + user);
-	    cb(user.name + "-" + user.klout);
+            console.log(user);
+	    cb(user.properties.name + "-" + user.properties.klout);
 	    return retval;
 	} 
     });
